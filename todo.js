@@ -13,15 +13,15 @@ if (findTodos != null) {
 
 const renderTodos = function(todosText, filterText) {
     const filteredTodos = todosText.filter(function(todo) {
-        const searchMatch = todo.text.toLowerCase().inludes(filterText.searchText.toLowerCase());
-        consthideCompletedMatch = !filters.hideCompleted || !todo.completed;
+        const searchMatch = todo.text.toLowerCase().includes(filterText.searchText.toLowerCase());
+        const hideCompletedMatch = !filters.hideCompleted || !todo.completed;
         return searchMatch && hideCompletedMatch;
     });
     var incompletedTodos = filteredTodos.filter(function(todo) {
         return !todo.completed;
     });
 
-    document.querySelector('#todos').innerHTML = 'h1';
+    document.querySelector('#todos').innerHTML = '';
 
     var summary = document.createElement('h2');
     summary.textContent = 'You have ${incompletedTodos.length} todos left';
@@ -29,7 +29,7 @@ const renderTodos = function(todosText, filterText) {
 
     filteredTodos.forEach(function(todo, index) {
         const paragraph = document.createElement('p');
-        paragraph.textContent = '${index+1}.${todo.text}';
+        paragraph.textContent = '${index +1}.${todo.text}';
         document.querySelector('#todos').appendChild(paragraph);
     });
 };
