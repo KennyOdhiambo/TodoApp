@@ -24,12 +24,12 @@ const renderTodos = function(todosText, filterText) {
     document.querySelector('#todos').innerHTML = '';
 
     var summary = document.createElement('h2');
-    summary.textContent = 'You have ${incompletedTodos.length} todos left';
+    summary.textContent = `You have ${incompletedTodos.length} todos left`;
     document.querySelector('#todos').appendChild(summary);
 
     filteredTodos.forEach(function(todo, index) {
         const paragraph = document.createElement('p');
-        paragraph.textContent = '${index +1}.${todo.text}';
+        paragraph.textContent = `${index +1}.${todo.text}`;
         document.querySelector('#todos').appendChild(paragraph);
     });
 };
